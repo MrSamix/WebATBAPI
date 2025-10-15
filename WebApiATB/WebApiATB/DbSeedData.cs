@@ -2,7 +2,6 @@
 using Domain;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 using System.Text.Json;
 
 namespace WebApiATB;
@@ -18,11 +17,10 @@ public static class DbSeedData
 
         if (!context.Categories.Any())
         {
-            var jsonFile = Path.Combine(Directory.GetCurrentDirectory(), "Helpers", "JsonData", "Categories.json");
+           var jsonFile = Path.Combine(Directory.GetCurrentDirectory(), "Helpers", "JsonData", "Categories.json");
             if (File.Exists(jsonFile))
             {
                 var jsonData = await File.ReadAllTextAsync(jsonFile);
-
                 try
                 {
                     var categories = JsonSerializer.Deserialize<List<SeederCategoryModel>>(jsonData);

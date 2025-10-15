@@ -7,7 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.11" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.4">
 			<PrivateAssets>all</PrivateAssets>
@@ -22,11 +21,6 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Core\Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Helpers\JsonData\" />
-	  <Folder Include="images\" />
 	</ItemGroup>
 
 	<ItemGroup>
