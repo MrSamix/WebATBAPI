@@ -3,7 +3,6 @@ import type { ICategoryItem } from "../../../types/category/ICategoryItem";
 import CategoryRow from "./CategoryRow";
 import api from "../../../api";
 import { Link } from "react-router";
-import CategoryCreatePage from "../CategoryCreatePage";
 
 
 const CategoriesListPage = () => {
