@@ -47,7 +47,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("tblCategories");
                 });
 #pragma warning restore 612, 618
         }

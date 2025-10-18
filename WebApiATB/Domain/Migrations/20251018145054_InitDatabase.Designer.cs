@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Domain.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251005123535_InitDatabase")]
+    [Migration("20251018145054_InitDatabase")]
     partial class InitDatabase
     {
         /// <inheritdoc />
@@ -50,7 +50,7 @@ namespace Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("tblCategories");
                 });
 #pragma warning restore 612, 618
         }
