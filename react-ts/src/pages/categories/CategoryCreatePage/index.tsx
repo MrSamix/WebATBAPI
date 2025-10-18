@@ -22,6 +22,15 @@ const CategoryCreatePage = () => {
         setForm({ ...form, [name]: value })
     }
 
+    const setPreviewImage = (file: File | null) => {
+        const preview = document.getElementById("preview") as HTMLImageElement;
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+        } else {
+            preview.src = "https://flowbite.com/docs/images/examples/image-3@2x.jpg";
+        }
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log("Send data:", form);
@@ -49,6 +58,8 @@ const CategoryCreatePage = () => {
         <>
             <h1 className={"text-4xl font-extrabold text-center mb-8"}>Створення категорії</h1>
 
+            
+
             <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
                 <TextInput
                     type="text"
@@ -69,10 +80,17 @@ const CategoryCreatePage = () => {
                     </label>
                 </div> */}
 
+                <figure className="max-w-sm mx-auto mb-3">
+                    <img id="preview" className="h-auto max-w-full rounded-lg" src="https://flowbite.com/docs/images/examples/image-3@2x.jpg" alt="image description" />
+                </figure>
+
                 <FileDropzone
                     id="dropzone-file"
                     file={form.image}
-                    onFileChange={(file) => setForm({ ...form, image: file })}
+                    onFileChange={(file) => {
+                        setForm({ ...form, image: file })
+                        setPreviewImage(file);
+                    }}
                     accept="image/*"
                     heightClassName="h-40"
                 />

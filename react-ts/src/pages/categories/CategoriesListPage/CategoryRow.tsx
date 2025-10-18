@@ -7,7 +7,7 @@ interface Props {
 
 const CategoryRow : React.FC<Props> = ({ category }) => {
     let imageUrl : string = "";
-    if (category.image.startsWith("https://")) {
+    if (category.image.startsWith("https://") || category.image.startsWith("http://")) {
         imageUrl = category.image;
     } else {
         imageUrl = `${APP_ENV.API_URL}/images/512_${category.image}`;
