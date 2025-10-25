@@ -3,12 +3,15 @@ import './index.css'
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router'
 import { CategoriesProvider } from './context/CategoriesContext.tsx'
+import { ThemeProvider } from './context/ThemeContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <>
   <BrowserRouter>
   <CategoriesProvider>
-    <App />
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
   </CategoriesProvider>
   </BrowserRouter>
   </>,

@@ -56,7 +56,7 @@ const CategoryCreatePage = () => {
 
     return (
         <>
-            <h1 className={"text-4xl font-extrabold text-center mb-8"}>Створення категорії</h1>
+            <h1 className={"text-4xl font-extrabold text-center mb-8 my-4 dark:text-white"}>Створення категорії</h1>
 
             
 
