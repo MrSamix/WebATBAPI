@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import type { ICategoryItem } from "../../../types/category/ICategoryItem";
 import CategoryRow from "./CategoryRow";
-import api from "../../../api";
 import { Link } from "react-router";
-
+import { CategoriesContext, type CategoriesContextType } from "../../../context/CategoriesContext";
 
 const CategoriesListPage = () => {
-    const [categories, setCategories] = useState<ICategoryItem[]>([])
-    
 
+    const { categories, requestCategories } = useContext(CategoriesContext) as CategoriesContextType;
 
-    
-    
     useEffect(() => {
         requestCategories();
-    }, [])
+    }, []);
 
-    const requestCategories = async () => {
-        try {
-            const response = await api.get<ICategoryItem[]>(`Categories`)
-            const { data } = response
-            setCategories(data);
-            // console.log("Response", data)
-        } catch (error) {
-            console.error("Problem working requestCategories", error)
-        }
-    }
 
 
     return(
@@ -44,6 +30,9 @@ const CategoriesListPage = () => {
                             </th>
                             <th scope="col" className="px-6 py-3">
                                 Назва
+                            </th>
+                            <th scope="col" className="py-3">
+                                Дії
                             </th>
                         </tr>
                     </thead>

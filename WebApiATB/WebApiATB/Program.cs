@@ -1,8 +1,8 @@
+using Core.Interfaces;
+using Core.Services;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 using WebApiATB;
-using WebApiATB.Interfaces;
-using WebApiATB.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 
 // ImageService
 builder.Services.AddScoped<IImageService, ImageService>();
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddControllers();
 
