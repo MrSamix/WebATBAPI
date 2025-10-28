@@ -1,9 +1,8 @@
 import classNames from "classnames";
-import { useContext, useState, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import FileDropzone from "../inputs/FileDropzone";
 import type { ICategoryItem } from "../../types/category/ICategoryItem";
 import api from "../../api";
-import { CategoriesContext, type CategoriesContextType } from "../../context/CategoriesContext";
 
 interface Props{
     id: number;
@@ -14,7 +13,7 @@ interface Props{
 
 function EditConfirmDialog({category}: {category: ICategoryItem}) {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    const { requestCategories } = useContext(CategoriesContext) as CategoriesContextType;
+    
     const [form, setForm] = useState<Props>({
         id: category.id,
         name: category.name,

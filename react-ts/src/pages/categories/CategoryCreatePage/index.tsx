@@ -62,6 +62,7 @@ const CategoryCreatePage = () => {
 
             <form className="max-w-md mx-auto" onSubmit={handleSubmit}>
                 <TextInput
+                    className="dark: text-white"
                     type="text"
                     name="name"
                     id="name"

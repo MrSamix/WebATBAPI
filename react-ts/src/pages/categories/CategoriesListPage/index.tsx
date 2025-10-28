@@ -1,17 +1,19 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import type { ICategoryItem } from "../../../types/category/ICategoryItem";
 import CategoryRow from "./CategoryRow";
 import { Link } from "react-router";
-import { CategoriesContext, type CategoriesContextType } from "../../../context/CategoriesContext";
 import { ThemeContext, type ThemeContextType } from "../../../context/ThemeContext";
+import { useGetCategoriesQuery } from "../../../services/apiCategory";
 
 const CategoriesListPage = () => {
+    const {data: categories} = useGetCategoriesQuery();
     const { theme, changeTheme } = useContext(ThemeContext) as ThemeContextType;
-    const { categories, requestCategories } = useContext(CategoriesContext) as CategoriesContextType;
 
-    useEffect(() => {
-        requestCategories();
-    }, []);
+    // const { categories, requestCategories } = useContext(CategoriesContext) as CategoriesContextType;
+
+    // useEffect(() => {
+    //     requestCategories();
+    // }, []);
 
 
 
@@ -48,7 +50,7 @@ const CategoriesListPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {categories.map((category: ICategoryItem) =>
+                        {categories?.map((category: ICategoryItem) =>
                             <CategoryRow key={category.id} category={category} />
                         )}
                     </tbody>
