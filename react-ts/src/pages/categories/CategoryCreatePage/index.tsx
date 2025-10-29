@@ -1,18 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import api from "../../../api";
 import TextInput from "../../../components/inputs/TextInput";
 import FileDropzone from "../../../components/inputs/FileDropzone";
+import type { ICategoryCreate } from "../../../types/category/ICategoryCreate";
+import { useCreateCategoryMutation } from "../../../services/apiCategory";
 
-interface Props{
-    name: string;
-    image: null | File;
-}
+// interface Props{
+//     name: string;
+//     image: null | File;
+// }
 
 const CategoryCreatePage = () => {
     const navigator = useNavigate();
+    const [ categoryCreate ] = useCreateCategoryMutation();
 
-    const [form, setForm] = useState<Props>({
+    const [form, setForm] = useState<ICategoryCreate>({
         name: "",
         image: null,
     })
@@ -33,18 +35,19 @@ const CategoryCreatePage = () => {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Send data:", form);
+        // console.log("Send data:", form);
         try {
-            const data = new FormData();
-            data.append("name", form.name);
-            if (form.image) {
-                data.append("image", form.image);
-            }
-            await api.post("Categories", data, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            // const data = new FormData();
+            // data.append("name", form.name);
+            // if (form.image) {
+            //     data.append("image", form.image);
+            // }
+            // await api.post("Categories", data, {
+            //     headers: {
+            //         "Content-Type": "multipart/form-data",
+            //     },
+            // });
+            await categoryCreate(form);
             navigator("/");
         } catch (error) {
             console.error("Problem working handleSubmit", error);

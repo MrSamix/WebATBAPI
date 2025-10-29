@@ -3,11 +3,12 @@ import type { ICategoryItem } from "../types/category/ICategoryItem";
 import {serverBaseQuery} from "../utils/fetchBaseQuery.ts";
 import type {ICategoryCreate} from "../types/category/ICategoryCreate.ts";
 import { serialize } from "object-to-formdata"
+import type { ICategoryUpdate } from "../types/category/ICategoryUpdate.ts";
 
 
 export const apiCategory = createApi({
     reducerPath: "apiCategory",
-    tagTypes: ["Categories"],
+    tagTypes: ["Categories"], // Ідентифікатори для кешування
     baseQuery: serverBaseQuery("Categories"),
         endpoints: (builder) => ({
             getCategories: builder.query<ICategoryItem[], void>({
@@ -15,7 +16,7 @@ export const apiCategory = createApi({
                     url: "",
                     method: "GET"
                 }),
-                providesTags: ["Categories"] // Кещує категорії
+                providesTags: ["Categories"] // Кешує категорії
             }),
             createCategory: builder.mutation<void, ICategoryCreate>({
                 query: (model) => {
@@ -41,6 +42,21 @@ export const apiCategory = createApi({
                     }
                 },
                 invalidatesTags: ["Categories"],
+            }),
+            updateCategory: builder.mutation<void, ICategoryUpdate>({
+                query: (model) => {
+                    try {
+                        const formData = serialize(model);
+                        return {
+                            method: "PUT",
+                            url: "",
+                            body: formData
+                        }
+                    } catch {
+                        throw new Error("Помилка перетворення даних")
+                    }
+                },
+                invalidatesTags: ["Categories"] // Перекешовує категорії
             })
         })
 });
@@ -48,5 +64,6 @@ export const apiCategory = createApi({
 export const {
     useGetCategoriesQuery,
     useCreateCategoryMutation,
-    useDeleteCategoryMutation
+    useDeleteCategoryMutation,
+    useUpdateCategoryMutation
 } = apiCategory;
