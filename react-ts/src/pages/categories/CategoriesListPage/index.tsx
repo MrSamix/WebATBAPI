@@ -1,25 +1,26 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 import type { ICategoryItem } from "../../../types/category/ICategoryItem";
 import CategoryRow from "./CategoryRow";
-import { Link } from "react-router";
-import { ThemeContext, type ThemeContextType } from "../../../context/ThemeContext";
+// import { Link } from "react-router";
+// import { ThemeContext, type ThemeContextType } from "../../../context/ThemeContext";
 import { useGetCategoriesQuery } from "../../../services/apiCategory";
 
 const CategoriesListPage = () => {
     const {data: categories} = useGetCategoriesQuery();
-    const { theme, changeTheme } = useContext(ThemeContext) as ThemeContextType;
+    // const { theme, changeTheme } = useContext(ThemeContext) as ThemeContextType;
 
     // const { categories, requestCategories } = useContext(CategoriesContext) as CategoriesContextType;
 
     // useEffect(() => {
     //     requestCategories();
     // }, []);
-
-
-
+    
+    
+    
     return(
         <>
-            <div className="flex justify-between mx-10 my-4">
+            <h1 className="absolute top-0 left-1/2 -translate-x-1/2 my-4 text-4xl font-extrabold text-center dark:text-white">Список категорій</h1>
+            {/* <div className="flex justify-between mx-10 my-4">
                 <button type="button" className="cursor-pointer text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5" onClick={changeTheme}>
                     {theme === "light" ? (
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -40,7 +41,7 @@ const CategoriesListPage = () => {
                     </Link>
                     <Link to="/create" type="button" className="align-middle focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">+</Link>
                 </div>
-            </div>
+            </div> */}
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
