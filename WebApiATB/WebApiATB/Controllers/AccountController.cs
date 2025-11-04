@@ -12,7 +12,7 @@ namespace WebApiATB.Controllers;
 
 [Route("api/[controller]/[action]")] // api/account/login
 [ApiController]
-public class AccountController(UserManager<UserEntity> userManager, IMapper mapper, IImageService imageService, IJwtTokenService jwtTokenService) : ControllerBase
+public class AccountController(UserManager<UserEntity> userManager, IMapper mapper, IImageService imageService, IJwtTokenService jwtTokenService, IAccountService accountService) : ControllerBase
 {
     //[HttpPost("login")]
     [HttpPost]
@@ -76,5 +76,25 @@ public class AccountController(UserManager<UserEntity> userManager, IMapper mapp
         //}
 
         //return Ok();
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> GoogleLogin([FromBody] AccountGoogleRequestModel model)
+    {
+        string result = await accountService.LoginByGoogle(model.Token);
+        if (string.IsNullOrEmpty(result))
+        {
+            return BadRequest(new
+            {
+                Status = 400,
+                IsValid = false,
+                Errors = new { Email = "Помилка під час авторизації" }
+            });
+        }
+        return Ok(new
+        {
+            Token = result
+        });
     }
 }

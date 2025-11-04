@@ -39,11 +39,19 @@ export const apiAuth = createApi({
                     throw new Error("Помилка входу");
                 }
             }
-        })
+        }),
+        loginByGoogle: builder.mutation<IAuthResponse, string>({
+            query: (token) => ({
+                url: 'googleLogin',
+                method: 'POST',
+                body: {token}
+            })
+        }),
     })
 })
 
 export const { 
     useRegisterMutation,
-    useLoginMutation
+    useLoginMutation,
+    useLoginByGoogleMutation
 } = apiAuth;

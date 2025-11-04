@@ -24,6 +24,10 @@ builder.Services.AddScoped<IImageService, ImageService>();
 // JwtTokenService
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 
+// AccountService
+builder.Services.AddScoped<IAccountService, AccountService>();
+
+
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 // Identity
