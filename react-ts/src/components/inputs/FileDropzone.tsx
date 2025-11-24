@@ -12,7 +12,7 @@ export interface FileDropzoneProps {
 const FileDropzone: React.FC<FileDropzoneProps> = ({
   id = "dropzone-file",
   accept = "image/*",
-  file,
+  // file,
   onFileChange,
   className = "",
   heightClassName = "h-40",

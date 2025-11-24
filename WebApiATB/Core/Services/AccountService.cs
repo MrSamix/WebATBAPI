@@ -2,9 +2,7 @@
 using Core.Interfaces;
 using Core.Models.Account;
 using Domain.Entities.Identity;
-using MailKit;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Configuration;
 using System.Net.Http.Headers;
 using System.Text.Json;
 
